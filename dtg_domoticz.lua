@@ -297,14 +297,14 @@ function SwitchID(DeviceName, idx, DeviceType, state, SendTo)
         print_to_log (1,"JSON request <"..t..">");
         jresponse, status = http.request(t)
         print_to_log(1,"raw jason", jresponse)
-        response = 'Switched '..DeviceName..' '..command
+        response = 'Modificado '..DeviceName..' '..command
   return response
 end
 
 function sSwitchName(DeviceName, DeviceType, SwitchType,idx,state)
   local status
   if idx == nil then
-    response = 'Device '..DeviceName..'  not found.'
+    response = 'No aparece '..DeviceName..'  como dispositivo.'
   else
     local subgroup = "light"
     if DeviceType == "scenes" then
@@ -325,7 +325,7 @@ function sSwitchName(DeviceName, DeviceType, SwitchType,idx,state)
     jresponse, status = http.request(t)
     print_to_log(3,"JSON feedback: ", jresponse)
    -- linea erronea  response = dtgmenu_lang[menu_language].text["Switched"] .. ' ' ..DeviceName..' => '..state
-    response = 'Switched' .. ' ' ..DeviceName..' => '..state
+    response = 'Modificado' .. ' ' ..DeviceName..' => '..state
   end
   print_to_log(0,"   -< SwitchName:",DeviceName,idx, status,response)
   return response, status
