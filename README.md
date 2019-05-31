@@ -17,6 +17,7 @@ git clone https://github.com/steps39/dtgbot.git
 ponemos: 
 
 git clone https://github.com/victordz/dtgbotesp.git
+mv dtgbotesp dtgbot
 
 ## SI YA TIENES DTGBOT EN MARCHA PERO QUIERES PROBAR ESTE MENU INLINE:
 SOLO SI YA VIENES CON DTGBOT instalado y unicamente quieres probar este menu inline, tienes que seguir esta pequeña fraccion de las instruciones:
@@ -35,6 +36,8 @@ Instalacion de este DTGBOT inline:
 cd ~
 
 git clone https://github.com/victordz/dtgbotesp.git
+
+mv dtgbotesp dtgbot
 
 cd ~/dtgbot
 
