@@ -28,7 +28,7 @@ function battery(DeviceName)
       return 1, DeviceName..' does not exist'
     end
    	print_to_log(DeviceName .. ' batterylevel is ' .. BattLevel .. "%")
-   	response = DeviceName..' battery level was '..BattLevel..'% when last seen '..LastUpdate
+   	response = DeviceName..' estaba al '..BattLevel..'% de bateria a las '..LastUpdate
 	return status, response;
 end
 
