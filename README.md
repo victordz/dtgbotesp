@@ -14,9 +14,10 @@ CONSEJO DTGBOT: No usar acentos ni ñ en los nombres de dispositivos para que DT
 en vez de:
 
 git clone https://github.com/steps39/dtgbot.git
-ponemos: 
+ejecutamos 2 comandos: 
 
 git clone https://github.com/victordz/dtgbotesp.git
+
 mv dtgbotesp dtgbot
 
 ## SI YA TIENES DTGBOT EN MARCHA PERO QUIERES PROBAR ESTE MENU INLINE:
