@@ -27,7 +27,7 @@ wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libs
 sudo dpkg -i libssl1.0.0_1.0.1t-1+deb8u11_armhf.deb
 
 
-## SI YA TIENES DTGBOT EN MARCHA PERO QUIERES PROBAR ESTE MENU INLINE:
+# SI YA TIENES DTGBOT EN MARCHA PERO QUIERES PROBAR ESTE MENU INLINE:
 SOLO SI YA VIENES CON DTGBOT instalado y unicamente quieres probar este menu inline, tienes que seguir esta pequeña fraccion de las instruciones:
 
 Copia de seguridad de tu dtgbot actual para poder deshacer todo:
