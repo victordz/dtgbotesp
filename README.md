@@ -20,7 +20,7 @@ git clone https://github.com/victordz/dtgbotesp.git
 
 mv dtgbotesp dtgbot
 
-## [LIBRERIA NECESARIA, SINO DARA ERROR]## (si la version 8u11 cambia este enlace no servira, buscar nuevo)
+## [LIBRERIA NECESARIA, EN CASO DE ERROR]## (si la version 8u11 cambia este enlace no servira, buscar nuevo)
 
 wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u11_armhf.deb
 
