@@ -1,7 +1,7 @@
-# VERSION ACTUALIZADA CON TECLADO INLINE
+# VERSION ACTUALIZADA CON TECLADO INLINE 05/03/2020
 
 
-Es la version modificada que yo uso del teclado inline del dtgbot con las correcciones que el creador ha hecho al branch master y el idioma español. 
+Es la version modificada que yo uso del teclado inline del dtgbot con las correcciones que el creador ha hecho al branch master y con el idioma español. 
 
 CONSEJO DTGBOT: No usar acentos ni ñ en los nombres de dispositivos para que DTGBOT no se cuelgue al intentar usarlos. Creo que pasa en todas las versiones no solo en la inline.
 
