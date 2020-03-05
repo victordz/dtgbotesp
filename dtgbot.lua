@@ -50,7 +50,23 @@ function print_to_debuglog(loglevel, logmessage, ...)
     file:close()
   end
 end
-
+---------------------------------------------------------
+-- new geturl to set protocol
+function geturl(url)
+  local resp = {}
+  local r, c, h, s = https.request{
+     url = url,
+     sink = ltn12.sink.table(resp),
+     protocol = "tlsv1_2"
+  }
+  returncode=c
+  response = ""
+  for i = 1, #resp do
+    response = response .. resp[i]
+  end
+  return response, returncode
+end														 
+							 
 function domoticzdata(envvar)
   -- loads get environment variable and prints in log
   localvar = os.getenv(envvar)
@@ -395,12 +411,12 @@ function send_msg(SendTo, Message, MessageId, replymarkup,MsgType)
     end
     print_to_log(1,telegram_url..'editMessageText?chat_id='..SendTo..'&message_id='..MessageId..'&text='..url_encode(Message)..replymarkup)
     print_to_log(3,'==> /editMessageText?chat_id='..SendTo..'&message_id='..MessageId..'&text='..Message.. replymarkup)
-    response, status = https.request(telegram_url..'editMessageText?chat_id='..SendTo..'&message_id='..MessageId..'&text='..url_encode(Message)..replymarkup)
+    response, status = geturl(telegram_url..'editMessageText?chat_id='..SendTo..'&message_id='..MessageId..'&text='..url_encode(Message)..replymarkup)
     -- rebuild new message with inlinemenu when the old message can't be updated
     if status == 400 and string.find(response, "Message can't be edited") then
       print_to_log(3,status..'<== ',response)
       print_to_log(3,'==> /sendMessage?chat_id='..SendTo..'&reply_to_message_id='..MessageId..'&text='..Message..replymarkup)
-      response, status = https.request(telegram_url..'sendMessage?chat_id='..SendTo..'&reply_to_message_id='..MessageId..'&text='..url_encode(Message)..replymarkup)
+      response, status = geturl(telegram_url..'sendMessage?chat_id='..SendTo..'&reply_to_message_id='..MessageId..'&text='..url_encode(Message)..replymarkup)
     end
   else
     if replymarkup == nil or replymarkup == "" then
@@ -410,9 +426,9 @@ function send_msg(SendTo, Message, MessageId, replymarkup,MsgType)
     end
     print_to_log(3,'==> /sendMessage?chat_id='..SendTo..'&reply_to_message_id='..MessageId..'&text='..Message..replymarkup)
     print_to_log(1,telegram_url..'sendMessage?chat_id='..SendTo..'&reply_to_message_id='..MessageId..'&text='..url_encode(Message)..replymarkup)
-    response, status = https.request(telegram_url..'sendMessage?chat_id='..SendTo..'&reply_to_message_id='..MessageId..'&text='..url_encode(Message)..replymarkup)
+    response, status = geturl(telegram_url..'sendMessage?chat_id='..SendTo..'&reply_to_message_id='..MessageId..'&text='..url_encode(Message)..replymarkup)
   end
-  --  response, status = https.request(telegram_url..'sendMessage?chat_id='..SendTo..'&text=hjk')
+  --  response, status = geturl(telegram_url..'sendMessage?chat_id='..SendTo..'&text=hjk')
   print_to_log(1,'Message sent',status)
   print_to_log(2,'response',response)
   print_to_log(3,status..'<== ',response)
@@ -467,7 +483,7 @@ function on_msg_receive (msg)
     -- check for received voicefiles
     elseif msg.voice then   -- check if message is voicefile
       print_to_log(0,"msg.voice.file_id:",msg.voice.file_id)
-      responsev, statusv = https.request(telegram_url..'getFile?file_id='..msg.voice.file_id)
+      responsev, statusv = geturl(telegram_url..'getFile?file_id='..msg.voice.file_id)
       if statusv == 200 then
         print_to_log(0,"responsev:",responsev)
         decoded_responsev = JSON:decode(responsev)
@@ -485,7 +501,7 @@ function on_msg_receive (msg)
       end
     elseif msg.video_note then   -- check if message is videofile
       print_to_log(0,"msg.video_note.file_id:",msg.video_note.file_id)
-      responsev, statusv = https.request(telegram_url..'getFile?file_id='..msg.video_note.file_id)
+      responsev, statusv = geturl(telegram_url..'getFile?file_id='..msg.video_note.file_id)
       if statusv == 200 then
         print_to_log(1,"responsev:",responsev)
         decoded_responsev = JSON:decode(responsev)
@@ -592,7 +608,7 @@ telegram_connected = false
 os.execute("echo " .. os.date("%Y-%m-%d %H:%M:%S") .. " >> " .. TempFileDir .. "/dtgnewloop.txt")
 --while TelegramBotOffset do
 while file_exists(dtgbot_pid) do
-  response, status = https.request(telegram_url..'getUpdates?timeout=60&offset='..TelegramBotOffset)
+  response, status = geturl(telegram_url..'getUpdates?timeout=60&limit=1&offset='..TelegramBotOffset)
   if status == 200 then
     if not telegram_connected then
       print_to_log(0,'')
