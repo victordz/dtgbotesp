@@ -22,9 +22,9 @@ mv dtgbotesp dtgbot
 
 ## [LIBRERIA NECESARIA, EN CASO DE ERROR] (si la version 8u11 cambia este enlace no servira, buscar nuevo)
 
-wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u11_armhf.deb
+wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u12_armhf.deb
 
-sudo dpkg -i libssl1.0.0_1.0.1t-1+deb8u11_armhf.deb
+sudo dpkg -i libssl1.0.0_1.0.1t-1+deb8u12_armhf.deb
 
 
 # SI YA TIENES DTGBOT EN MARCHA PERO QUIERES PROBAR ESTE MENU INLINE:
