@@ -1,5 +1,5 @@
-# NO INSTALAR, PENDIENTE DE REVISAR, CREO QUE NO FUNCIONA 05/04/2020
-# VERSION ACTUALIZADA CON TECLADO INLINE 05/03/2020
+
+# VERSION ACTUALIZADA CON TECLADO INLINE 15/04/2020
 
 
 Es la version modificada que yo uso del teclado inline del dtgbot con las correcciones que el creador ha hecho al branch master y con el idioma español. 
