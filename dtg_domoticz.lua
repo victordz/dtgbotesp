@@ -295,6 +295,7 @@ function SwitchID(DeviceName, idx, DeviceType, state, SendTo)
         end
         t = server_url.."/json.htm?type=command&param=switch"..DeviceType.."&idx="..idx.."&switchcmd="..state;
         print_to_log (1,"JSON request <"..t..">");
+	response = 'Switched '..DeviceName..' '..state
         jresponse, status = http.request(t)
         print_to_log(1,"raw jason", jresponse)
         response = 'Modificado '..DeviceName..' '..command
